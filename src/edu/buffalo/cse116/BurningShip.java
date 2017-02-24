@@ -11,7 +11,7 @@ public class BurningShip {
       Set yCalc = current point's y-coordinate
       Set dist = distance from the point (xCalc, yCalc) to (0,0) using the Pythagorean theorem
       Set passes = 0
-      While dist ≤ 2 and passes < 255 do
+      While dist <= 2 and passes < 255 do
         Update xCalc and yCalc using the update function defined for the fractal being generated
         Increase passes by 1
         Set dist = distance from the point (xCalc, yCalc) to (0,0) using the Pythagorean theorem
