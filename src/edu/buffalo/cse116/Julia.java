@@ -1,18 +1,4 @@
 package edu.buffalo.cse116;
-
-
-/*The fractals your program will be generating this term are all "escape-time algorithms". Escape-time algorithms imagine the picture is a Cartesian plane (I had to look this up, too -- it means point is defined by its x- and y-coordinates). Each PIXEL (point on this plane) is then colored using the following process:
-
-    Set xCalc = current point's x-coordinate
-    Set yCalc = current point's y-coordinate
-    Set dist = distance from the point (xCalc, yCalc) to (0,0) using the Pythagorean theorem
-    Set passes = 0
-    While dist ≤ 2 and passes < 255 do
-      Update xCalc and yCalc using the update function defined for the fractal being generated
-      Increase passes by 1
-      Set dist = distance from the point (xCalc, yCalc) to (0,0) using the Pythagorean theorem
-    EndWhile
-    Set the current point's escape-time equal to passes*/
     
 public class Julia{
 	
