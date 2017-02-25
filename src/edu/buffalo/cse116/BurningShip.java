@@ -1,51 +1,59 @@
 package edu.buffalo.cse116;
 
 public class BurningShip {
-	private double dist;
-	private int passes;
-	private int escapetime;	
-	double x = .0001953;
-	double y = .000205;
+	
+	private double xCalc;
+	private double yCalc;
+	private int[][] FractalArray = new int[512][512];
+	
 	/*
-	 * Set xCalc = current point's x-coordinate
-      Set yCalc = current point's y-coordinate
-      Set dist = distance from the point (xCalc, yCalc) to (0,0) using the Pythagorean theorem
-      Set passes = 0
-      While dist <= 2 and passes < 255 do
-        Update xCalc and yCalc using the update function defined for the fractal being generated
-        Increase passes by 1
-        Set dist = distance from the point (xCalc, yCalc) to (0,0) using the Pythagorean theorem
-      EndWhile
-      Set the current point's escape-time equal to passes
+	Creates a 2d array which the fractal image will be created
 	 */
-	public int BurningShipFractal(double xCalc, double yCalc){
-		dist = Math.sqrt((xCalc*xCalc)+(yCalc*yCalc));
-		passes = 0;
+	public int[][] BurningShipFractal(int x, int y){
+		for(int i = 0; i < FractalArray.length; i++){
+			for(int j = 0; j<FractalArray[0].length; j++){
+				xCalc = translateX(i);
+				yCalc = translateY(j);
+				FractalArray[i][j] = ETABurningShip(xCalc, yCalc);
+			}
+			
+		}
+		return FractalArray;
+	}
+	/*
+	 * translate a pixel's row to the associated x-coordinate in the fractal
+	 * @return the x-coordinate in the fractal
+	 */
+	public double translateX(int j) {
+		double x = 0.1/512;
+		return -1.8 + x * j;	
+	}
+	/*
+	 * translate a pixel's row to the associated y-coordinate in the fractal
+	 * @return the y-coordinate in the fractal
+	 */
+	public double translateY(int i) {
+		double y = 0.105/512;
+		return -0.08 + y * i;
+	}
+	/*
+	 * Escape Time algorithm for the fractal
+	 * @return the escape time
+	 */
+	public int ETABurningShip(double xCalc, double yCalc){
+		double dist = Math.sqrt((xCalc*xCalc)+(yCalc*yCalc));
+		int passes = 0;
 		while(dist <= 2 && passes<255){
 			xCalc = ((xCalc*xCalc) - (yCalc*yCalc) + xCalc);
 			yCalc = Math.abs(2*xCalc*yCalc) + yCalc;
 			passes++;
 			dist = Math.sqrt((xCalc*xCalc)+(yCalc*yCalc));
 		}
-		escapetime = passes;
-		return escapetime;
+		return passes;
+	
 	}
-	public int[][] BurningShipArray(int rows, int cols){
-		rows = 512;
-		cols = 512; 
-		int [][] x = new int[rows][cols];
-		return x;	
-	}
-	public double BurningShipX(double index){
-		index = ((x * index) + x) ;
-		return index;
-		}
-	public double BurningShipY(double index){
-		index = ((y*index) + y);
-		return index;
-	}
-		
-	}
+	
+}
 	
 	
 	

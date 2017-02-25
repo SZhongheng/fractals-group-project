@@ -3,8 +3,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ProjectTests {
-	Algorithms A = new Algorithms();
+public class MandelbrotTests {
+	Mandelbrot A = new Mandelbrot();
 	
 	@Test
 	public void test_MandelbrotSetDist() {

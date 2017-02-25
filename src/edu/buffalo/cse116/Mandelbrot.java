@@ -1,5 +1,5 @@
 package edu.buffalo.cse116;
-public class Algorithms {
+public class Mandelbrot {
 	protected double xCalc;
 	protected double xTemp;
 	protected double NyCalc;
@@ -16,8 +16,6 @@ public class Algorithms {
 			for (int j = 0; j < MandelbrotSetArray[0].length; j++) {
 			}
 		}
-		xCalc = 0.3207031250000001;
-		yCalc = -0.07109374999999386;
 		dist = Math.sqrt(Math.pow((xCalc - 0), 2) + Math.pow((yCalc - 0), 2));
 		passes = 0;
 		while (dist <= 2 && passes < 255) {
@@ -29,12 +27,16 @@ public class Algorithms {
 		}
 		escapeTime = passes;
 	}
-	
+	/*
+	 * @return distance
+	 */
 	public double MandelbrotSetDist(double dist) {
 		double finalDist = dist;
 		return finalDist;
 	}
-	
+	/*
+	 * @return escape time
+	 */
 	public int MandelbrotSetEscapeTime(int escapeTime) {
 		int finalEscapeTime = escapeTime;
 		return finalEscapeTime;
