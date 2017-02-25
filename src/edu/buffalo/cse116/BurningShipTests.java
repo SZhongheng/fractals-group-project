@@ -20,13 +20,6 @@ public class BurningShipTests {
 	public void translateY(){
 		assertEquals(0.025,ship.translateY(512),.0001);
 	}
-	@Test
-	public void noZEROorONE(){
-		
-		
-		}
-		
-		
 	
 	@Test
 	public void FractalArray(){

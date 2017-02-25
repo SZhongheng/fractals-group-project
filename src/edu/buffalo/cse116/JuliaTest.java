@@ -25,5 +25,10 @@ public class JuliaTest {
 	public void yTranslate(){
 		assertEquals(1.0, j.translateY(512),0.001);
 	}
+	
+	@Test
+	public void getArray() {
+		assertEquals(262144, j.getArray().length * j.getArray()[0].length);
+	}
 
 }

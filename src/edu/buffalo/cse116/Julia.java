@@ -69,6 +69,8 @@ public class Julia{
 		return passes;
 	}
 			
-		
+	public int[][] getArray() {
+		return this._array1;
+	}	
 		
 }
