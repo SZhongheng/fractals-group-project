@@ -1,5 +1,7 @@
 package edu.buffalo.cse116;
 
+import java.util.Arrays;
+
 public class BurningShip {
 	
 	private double xCalc;
