@@ -25,5 +25,10 @@ public class MultibrotTest {
 	public void yTranslate(){
 		assertEquals(1.3, m.translateY(512), 0.001);
 	}
+	
+	@Test
+	public void test_getArray() {
+		assertEquals(262144, m.getArray().length * m.getArray()[0].length);
+	}
 
 }
