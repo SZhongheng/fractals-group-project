@@ -23,7 +23,10 @@ public class BurningShipTests {
 	
 	@Test
 	public void FractalArray(){
-		assertEquals(262144,ship.BurningShipFractal(512,512).length*ship.BurningShipFractal(512, 512).length);
+		assertEquals(262144,ship.getArray().length*ship.getArray()[0].length);
 	}
-	
+	@Test
+	public void noZEROorONE(){
+		assertTrue(ship.zerorone());
+	}
 }

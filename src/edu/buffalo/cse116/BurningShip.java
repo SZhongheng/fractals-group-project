@@ -11,7 +11,7 @@ public class BurningShip {
 	/*
 	Creates a 2d array which the fractal image will be created
 	 */
-	public int[][] BurningShipFractal(int x, int y){
+	public BurningShip(){
 		for(int i = 0; i < FractalArray.length; i++){
 			for(int j = 0; j<FractalArray[0].length; j++){
 				xCalc = translateX(i);
@@ -20,7 +20,7 @@ public class BurningShip {
 			}
 			
 		}
-		return FractalArray;
+	
 	}
 	/*
 	 * translate a pixel's row to the associated x-coordinate in the fractal
@@ -54,7 +54,20 @@ public class BurningShip {
 		return passes;
 	
 	}
-	
+	public int[][] getArray(){
+		return this.FractalArray;
+	}
+	public boolean zerorone(){
+		boolean x = true;
+		for(int i = 0;i<512;i++){
+			for(int j = 0;j<512;j++){
+				if (FractalArray[i][j] == 1 || FractalArray[i][j] == 0){
+					x = false;
+				}
+			}
+		}
+		return x;
+	}
 }
 	
 	
