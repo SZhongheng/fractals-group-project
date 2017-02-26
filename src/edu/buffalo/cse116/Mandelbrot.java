@@ -50,6 +50,8 @@ public class Mandelbrot {
 	public void setArray() {
 		for (int i = 0; i < this.MandelbrotArray.length; i++) {
 			for (int j = 0; j < this.MandelbrotArray[0].length; j++) {
+				X = translateX(i);
+				Y = translateY(j);
 				this.MandelbrotArray[i][j] = this.escapeTime(X, Y);
 			}
 		}
