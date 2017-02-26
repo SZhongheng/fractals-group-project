@@ -19,13 +19,13 @@ public class MandelbrotTests {
 	}
 	
 	@Test
-	public void test_escapeTime() {
-		assertEquals(255, M.escapeTime(0.3207031250000001, -0.07109374999999386));
+	public void test_escapeTimeNeverExceeds() {
+		assertEquals(255, M.escapeTime(0.3207031250000001, -0.07109374999999386), 0.00000000001);
 	}
 	
 	@Test
-	public void test_escapeTimeSingleLoop() {
-		assertEquals(1, M.escapeTime(0.5946289062500001, 1.2949218750000122));
+	public void test_escapeTimeExceeds() {
+		assertEquals(1, M.escapeTime(0.5946289062500001, 1.2949218750000122), 0.00000000001);
 	}
 	
 	@Test
