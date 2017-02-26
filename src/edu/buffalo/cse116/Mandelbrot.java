@@ -47,7 +47,7 @@ public class Mandelbrot {
 		return escapeTime;
 	}
 	
-	public void setArray() {
+	public void Mandelbrot() {
 		for (int i = 0; i < this.MandelbrotArray.length; i++) {
 			for (int j = 0; j < this.MandelbrotArray[0].length; j++) {
 				X = translateX(i);
