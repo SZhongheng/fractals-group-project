@@ -31,8 +31,8 @@ public class Mandelbrot {
 		double yCalc = yInput;
 		double newX;
 		double newY;
-		int i;
-		int j;
+		//int i;
+		//int j;
 		double dist = Math.sqrt(Math.pow((xCalc - 0), 2) + Math.pow((yCalc - 0), 2));
 		passes = 0;
 		while (dist <= 2 && passes < 255) {
