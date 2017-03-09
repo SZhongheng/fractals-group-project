@@ -10,11 +10,11 @@ public class Julia{
 	Creates a 2d array which the fractal image will be created
 	 */
 	public Julia(){
-	 for (int i = 0; i < 512; i ++){
-		 for (int j = 0; i < 512; i ++){
-			 double xCalc = translateX(i);
-			 double yCalc = translateY(j);
-			 _array1[i][j] = EscapeTimeAlgorithm(xCalc, yCalc);
+	 for (int i = 0; i < _array1.length; i ++){
+		 for (int j = 0; i < _array1[0].length; i ++){
+			// double xCalc = translateX(i);
+			 //double yCalc = translateY(j);
+			 _array1[i][j] = EscapeTimeAlgorithm(translateX(i), translateY(j));
 		 }
 	 }
 		 
@@ -43,16 +43,24 @@ public class Julia{
 		 * Escape Time algorithm for the fractal
 		 * @return the escape time
 		 */
-	public int EscapeTimeAlgorithm(double xCalc, double yCalc){
-		int passes = 0;
+	public int EscapeTimeAlgorithm(double xInput, double yInput){
+		int escapeTime = 0;
+		double xCalc = xInput;
+		double yCalc = yInput;
+		double newX;
+		double newY;
 		double dist = Math.sqrt(xCalc * xCalc + (yCalc * yCalc));
+		int passes = 0;
 		while (dist <= 2 && passes < 255){
-			xCalc = (xCalc * xCalc) - (yCalc * yCalc) + -0.72689;
-			yCalc = (2 * xCalc * yCalc) + 0.188887;
+			newX = (xCalc * xCalc) - (yCalc * yCalc) + -0.72689;
+			newY = (2 * xCalc * yCalc) + 0.188887;
+			xCalc = newX;
+			yCalc = newY;
 			passes ++;
 			dist = Math.sqrt(xCalc * xCalc + yCalc * yCalc);
+			escapeTime = passes;
 		}
-		return passes;
+		return escapeTime;
 	}
 			
 	public int[][] getArray() {
