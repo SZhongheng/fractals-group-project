@@ -107,7 +107,7 @@ public class Test {
 		JButton btnDraw = new JButton("Draw");
 		btnDraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(J.getArray());
+				FP.updateImage(Mub.getArray());
 				FP.setIndexColorModel(newModel.createBluesColorModel(256));
 			}
 		});

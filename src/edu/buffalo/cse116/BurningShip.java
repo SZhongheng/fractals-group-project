@@ -30,12 +30,18 @@ public class BurningShip {
 	 * Escape Time algorithm for the fractal
 	 * @return the escape time
 	 */
-	public int ETABurningShip(double xCalc, double yCalc){
+	public int ETABurningShip(double xInput, double yInput){
+		xCalc = xInput;
+		yCalc = yInput;
+		double newX;
+		double newY;
 		double dist = Math.sqrt((xCalc*xCalc)+(yCalc*yCalc));
 		int passes = 0;
 		while(dist <= 2 && passes<255){
-			xCalc = ((xCalc*xCalc) - (yCalc*yCalc) + xCalc);
-			yCalc = Math.abs(2*xCalc*yCalc) + yCalc;
+			newX = ((xCalc*xCalc) - (yCalc*yCalc) + xInput);
+			newY = Math.abs(2*xCalc*yCalc) + yInput;
+			xCalc = newX;
+			yCalc = newY;
 			passes++;
 			dist = Math.sqrt((xCalc*xCalc)+(yCalc*yCalc));
 		}
@@ -47,9 +53,8 @@ public class BurningShip {
 	public BurningShip(){
 		for(int i = 0; i < FractalArray.length; i++){
 			for(int j = 0; j<FractalArray[0].length; j++){
-				xCalc = translateX(i);
-				yCalc = translateY(j);
-				FractalArray[i][j] = ETABurningShip(xCalc, yCalc);
+				
+				FractalArray[i][j] = ETABurningShip(translateX(i), translateY(j));
 			}
 		}
 	}

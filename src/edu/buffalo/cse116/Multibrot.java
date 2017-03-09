@@ -11,10 +11,9 @@ public class Multibrot {
 
 	public Multibrot() {
 		for (int i = 0; i < 512; i ++){
-			for (int j = 0; i < 512; i ++){
-				double xCalc = translateX(i);
-				double yCalc = translateY(j);
-				_array1[i][j] = EscapeTimeAlgorithm(xCalc, yCalc);
+			for (int j = 0; j < 512; j ++){
+				
+				_array1[i][j] = EscapeTimeAlgorithm(translateX(i), translateY(j));
 			}
 
 		}
@@ -39,12 +38,18 @@ public class Multibrot {
 	 * Escape Time algorithm for the fractal
 	 * @return the escape time
 	 */
-	public int EscapeTimeAlgorithm(double xCalc, double yCalc){
+	public int EscapeTimeAlgorithm(double xInput, double yInput){
 		int passes = 0;
-		double dist = Math.sqrt((xCalc *xCalc) - (yCalc * yCalc));
+		double xCalc = xInput;
+		double yCalc = yInput;
+		double newX;
+		double newY;
+		double dist = Math.sqrt((xCalc *xCalc) + (yCalc * yCalc));
 		while (dist <= 2 && passes < 255){
-			xCalc = ((xCalc * xCalc *xCalc) - (3 * xCalc * yCalc * yCalc));
-			yCalc = ((3 * xCalc * xCalc * yCalc) - (yCalc * yCalc * yCalc));
+			newX = ((xCalc * xCalc *xCalc) - (3 * xCalc * yCalc * yCalc)+xInput);
+			newY = ((3 * xCalc * xCalc * yCalc) - (yCalc * yCalc * yCalc)+yInput);
+			xCalc = newX;
+			yCalc = newY;
 			passes ++;
 			dist = Math.sqrt(xCalc * xCalc + yCalc * yCalc);
 		}
