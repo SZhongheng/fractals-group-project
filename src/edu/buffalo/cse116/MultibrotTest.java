@@ -15,7 +15,7 @@ public class MultibrotTest {
 	}
 	@Test
 	public void testMultibrotExceed(){
-		assertEquals(0, m.EscapeTimeAlgorithm(0.9921875, 1.05625 ));
+		assertEquals(1, m.EscapeTimeAlgorithm(0.9921875, 1.05625 ));
 	}
 	@Test
 	public void xTranslate(){

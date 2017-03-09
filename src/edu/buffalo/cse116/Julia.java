@@ -27,7 +27,7 @@ public class Julia{
 	 public double translateX(int i){
 		 double xCalc = -1.7 + _x * i;
 		 return xCalc;
-		 
+		 //haha
 	 }
 	 /*
 		 * translate a pixel's row to the associated y-coordinate in the fractal
