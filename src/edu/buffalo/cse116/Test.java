@@ -25,10 +25,7 @@ import java.awt.GridLayout;
 public class Test {
 	
 	FractalPanel FP = new FractalPanel();
-	BurningShip BS = new BurningShip();
-	Mandelbrot Mab = new Mandelbrot();
-	Julia J = new Julia();
-	Multibrot Mub = new Multibrot();
+	Fractal F = new Fractal();
 	private JFrame frame;
 
 	/**
@@ -107,7 +104,7 @@ public class Test {
 		JButton btnDraw = new JButton("Draw");
 		btnDraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(Mub.getArray());
+				FP.updateImage(F.bsArray());
 				FP.setIndexColorModel(newModel.createBluesColorModel(256));
 			}
 		});
