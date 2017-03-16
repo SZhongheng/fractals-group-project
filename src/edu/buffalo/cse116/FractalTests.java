@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-
+//d
 public class FractalTests {
 	Fractal F = new Fractal();
 	@Test

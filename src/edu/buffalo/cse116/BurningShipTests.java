@@ -10,7 +10,7 @@ public class BurningShipTests {
 	@Test
 	public void NoExceedEscapedistance() {
 		assertEquals(2, ship.ETABurningShip(-1.7443359374999874,-0.017451171875000338), 0.0001);
-
+//d
 	}
 	@Test 
 	public void translateX(){

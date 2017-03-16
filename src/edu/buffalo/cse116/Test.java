@@ -21,7 +21,7 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import java.awt.GridLayout;
-
+//d
 public class Test {
 	
 	FractalPanel FP = new FractalPanel();

@@ -2,7 +2,7 @@ package edu.buffalo.cse116;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+//d
 public class MandelbrotTests {
 	Mandelbrot M = new Mandelbrot();
 	

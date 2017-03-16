@@ -1,7 +1,7 @@
 package edu.buffalo.cse116;
 
 public class Multibrot {
-
+//d
 	private int _array1[][] = new int [512][512];
 	private double _x = 2.0/512;
 	private double _y = 2.6/512;

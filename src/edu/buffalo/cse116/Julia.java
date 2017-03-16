@@ -1,7 +1,7 @@
 package edu.buffalo.cse116;
     
 public class Julia{
-	
+//d	
 	private int _array1[][] = new int [512][512];
 	
 	private double _x = 3.4/512;

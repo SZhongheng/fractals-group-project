@@ -1,7 +1,7 @@
 package edu.buffalo.cse116;
 
 import org.junit.experimental.theories.Theories;
-
+//d
 public class Mandelbrot {
 	
 	private double startingXRange = -2.15;

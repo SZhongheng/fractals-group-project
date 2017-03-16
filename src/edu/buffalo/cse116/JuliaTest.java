@@ -3,7 +3,7 @@ package edu.buffalo.cse116;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+//d
 public class JuliaTest {
 	
 	Julia j = new Julia();

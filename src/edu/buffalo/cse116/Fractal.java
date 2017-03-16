@@ -25,7 +25,7 @@ public class Fractal {
 		return -1.7 + x * i;
 	}
 	public double jTranslateY(int j){
-		y = 2.0/512;
+		y = 2.0/512;//d
 		return -1.0 + y * j;
 	}
 	public double maTranslateX(int i){
