@@ -61,7 +61,10 @@ public class FractalTests {
 	public void MAtest_escapeTimeNeverExceeds() {
 		assertEquals(255, F.maETA(0.3207031250000001, -0.07109374999999386), 0.00000000001);
 	}
-	
+	@Test
+	public void noZEROorONE(){
+		assertFalse(F.zerorone());
+	}
 	@Test
 	public void MAtest_escapeTimeExceeds() {
 		assertEquals(1, F.maETA(0.5946289062500001, 1.2949218750000122), 0.00000000001);
@@ -93,4 +96,6 @@ public class FractalTests {
 	public void MUtest_getArray() {
 		assertEquals(262144, F.muArray().length * F.muArray()[0].length);
 	}
+	
+	
 }

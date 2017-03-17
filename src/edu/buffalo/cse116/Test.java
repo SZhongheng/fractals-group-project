@@ -28,6 +28,7 @@ public class Test {
 	Fractal F = new Fractal();
 	private JFrame frame;
 	private ColorModelFactory newModel = new ColorModelFactory();
+	int x;
 
 	/**
 	 * Launch the application.
@@ -87,15 +88,38 @@ public class Test {
 		
 		JMenuItem mntmBurningShip = new JMenuItem("Burning Ship");
 		mnFractal.add(mntmBurningShip);
-		
+		mntmBurningShip.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				FP.updateImage(F.bsArray());
+				x=1;
+			}
+		});
 		JMenuItem mntmJulia = new JMenuItem("Julia");
 		mnFractal.add(mntmJulia);
+		mntmJulia.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				FP.updateImage(F.jArray());
+				x=2;
+			}
+		});
 		
 		JMenuItem mntmMandelbrot = new JMenuItem("Mandelbrot");
 		mnFractal.add(mntmMandelbrot);
+		mntmMandelbrot.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				FP.updateImage(F.maArray());
+				x=3;
+			}
+		});
 		
 		JMenuItem mntmMultibrot = new JMenuItem("Multibrot");
 		mnFractal.add(mntmMultibrot);
+		mntmMultibrot.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				FP.updateImage(F.muArray());
+				x=4;
+			}
+		});
 		
 		JMenu mnColor = new JMenu("Color");
 		menuBar.add(mnColor);
@@ -106,7 +130,10 @@ public class Test {
 		green.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createGreenColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
 			}
 		});
 		
@@ -116,7 +143,11 @@ public class Test {
 		red.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createRedColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
+			
 			}
 		});
 		
@@ -126,7 +157,10 @@ public class Test {
 		blue.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createBluesColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
 			}
 		});
 		
@@ -136,7 +170,10 @@ public class Test {
 		purple.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createPurpleColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
 			}
 		});
 		
@@ -145,7 +182,10 @@ public class Test {
 		turqoise.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createTurqoiseColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
 			}
 		});
 		
@@ -154,7 +194,10 @@ public class Test {
 		rainbow.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createRainbowColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
 			}
 		});
 		
@@ -164,7 +207,10 @@ public class Test {
 		gray.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createGrayColorModel(256));
-			FP.updateImage(F.bsArray());
+			if(x==1){FP.updateImage(F.bsArray());}
+			if(x==2){FP.updateImage(F.jArray());}
+			if(x==3){FP.updateImage(F.maArray());}
+			if(x==4){FP.updateImage(F.muArray());}
 			}
 		});
 		
@@ -179,14 +225,6 @@ public class Test {
 		
         
 		
-		JButton btnDraw = new JButton("Draw");
-		btnDraw.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(F.bsArray());
-				
-			}
-		});
-		menuBar.add(btnDraw);
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		frame.getContentPane().add(FP);
 	}

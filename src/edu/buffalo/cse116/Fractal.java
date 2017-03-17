@@ -139,6 +139,20 @@ public class Fractal {
 			}
 		return this.muFractal;
 		}
+	public int[][]getbsArray(){
+		return this.bsFractal;
+	}
+	public boolean zerorone(){
+		boolean x = true;
+		for(int i = 0;i<bsFractal.length;i++){
+			for(int j = 0;j<bsFractal[0].length;j++){
+				if (bsFractal[i][j] == 1 || bsFractal[i][j] == 0){
+					x = false;
+				}
+			}
+		}
+		return x;
+	}
 }
 
 

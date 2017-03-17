@@ -27,6 +27,6 @@ public class BurningShipTests {
 	}
 	@Test
 	public void noZEROorONE(){
-		assertTrue(ship.zerorone());
+		assertEquals(2,ship.zerorone());
 	}
 }
