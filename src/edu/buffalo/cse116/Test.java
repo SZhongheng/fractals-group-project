@@ -106,6 +106,7 @@ public class Test {
 		green.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createGreenColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
@@ -115,6 +116,7 @@ public class Test {
 		red.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createRedColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
@@ -124,6 +126,7 @@ public class Test {
 		blue.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createBluesColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
@@ -133,6 +136,7 @@ public class Test {
 		purple.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createPurpleColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
@@ -141,6 +145,7 @@ public class Test {
 		turqoise.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createTurqoiseColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
@@ -149,6 +154,7 @@ public class Test {
 		rainbow.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createRainbowColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
@@ -158,6 +164,7 @@ public class Test {
 		gray.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 			FP.setIndexColorModel(newModel.createGrayColorModel(256));
+			FP.updateImage(F.bsArray());
 			}
 		});
 		
