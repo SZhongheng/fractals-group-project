@@ -27,6 +27,7 @@ public class Test {
 	FractalPanel FP = new FractalPanel();
 	Fractal F = new Fractal();
 	private JFrame frame;
+	private ColorModelFactory newModel = new ColorModelFactory();
 
 	/**
 	 * Launch the application.
@@ -98,19 +99,90 @@ public class Test {
 		
 		JMenu mnColor = new JMenu("Color");
 		menuBar.add(mnColor);
+		
+		
+		JMenuItem green = new JMenuItem("Green");
+		mnColor.add(green);
+		green.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createGreenColorModel(256));
+			}
+		});
+		
+
+		JMenuItem red = new JMenuItem("Red");
+		mnColor.add(red);
+		red.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createRedColorModel(256));
+			}
+		});
+		
+
+		JMenuItem blue = new JMenuItem("Blue");
+		mnColor.add(blue);
+		blue.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createBluesColorModel(256));
+			}
+		});
+		
+
+		JMenuItem purple = new JMenuItem("Purple");
+		mnColor.add(purple);
+		purple.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createPurpleColorModel(256));
+			}
+		});
+		
+		JMenuItem turqoise = new JMenuItem("Turqoise");
+		mnColor.add(turqoise);
+		turqoise.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createTurqoiseColorModel(256));
+			}
+		});
+		
+		JMenuItem rainbow = new JMenuItem("Rainbow");
+		mnColor.add(rainbow);
+		rainbow.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createRainbowColorModel(256));
+			}
+		});
+		
+		
+		JMenuItem gray = new JMenuItem("Gray");
+		mnColor.add(gray);
+		gray.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			FP.setIndexColorModel(newModel.createGrayColorModel(256));
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
         
-        ColorModelFactory newModel = new ColorModelFactory();
 		
 		JButton btnDraw = new JButton("Draw");
 		btnDraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FP.updateImage(F.bsArray());
-				FP.setIndexColorModel(newModel.createBluesColorModel(256));
+				
 			}
 		});
 		menuBar.add(btnDraw);
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		frame.getContentPane().add(FP);
 	}
+	
 
 }
