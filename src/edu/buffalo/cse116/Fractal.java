@@ -77,12 +77,13 @@ public class Fractal {
 		return passes;
 	}
 	
+	
 	public int maETA(double xInput, double yInput, double numInput){
 		xCalc = xInput;
 		yCalc = yInput;
 		double dist = Math.sqrt((xCalc*xCalc)+(yCalc*yCalc));
 		int passes = 0;
-		while (dist <= numInput && passes < 255) {
+		while (dist <= numInput && passes < 255){
 			newX = ((Math.pow(xCalc, 2)) - (Math.pow(yCalc, 2)) + xInput);
 			newY = ((2 * xCalc * yCalc) + yInput);
 			xCalc = newX;
