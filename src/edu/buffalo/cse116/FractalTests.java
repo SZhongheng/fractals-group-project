@@ -1,6 +1,7 @@
 package edu.buffalo.cse116;
 import static org.junit.Assert.*;
 
+
 import org.junit.Test;
 
 
@@ -9,7 +10,7 @@ public class FractalTests {
 	Fractal F = new Fractal();
 	@Test
 	public void bsNeverExceed(){
-		assertEquals(255, F.bsETA(-1.7443359374999874,-0.017451171875000338), 0.0001);
+		assertEquals(255, F.bsETA(-1.7443359374999874,-0.017451171875000338, 3.0), 0.001);
 	}
 	@Test 
 	public void bsTranslateX(){
@@ -22,15 +23,15 @@ public class FractalTests {
 	
 	@Test
 	public void bsFractal(){
-		assertEquals(262144,F.bsArray().length*F.bsArray()[0].length);
+		assertEquals(262144,F.bsArray(3.0).length*F.bsArray(3.0)[0].length);
 	}
 	@Test
 	public void testJuliaNeverExceed(){
-		assertEquals(255, F.jETA(1.0492187499999897, -0.234375), 0.000001);
+		assertEquals(255, F.jETA(1.0492187499999897, -0.234375, 3.0), 0.000001);
 	}
 	@Test
 	public void testJuliaExceed(){
-		assertEquals(1, F.jETA(1.6933593749999853, 0.9765625), 0.0000001);
+		assertEquals(1, F.jETA(1.6933593749999853, 0.9765625, 3.0), 0.0000001);
 	}
 	@Test
 	public void JxTranslate(){
@@ -43,7 +44,7 @@ public class FractalTests {
 	
 	@Test
 	public void JgetArray() {
-		assertEquals(262144, F.jArray().length * F.jArray()[0].length);
+		assertEquals(262144, F.jArray(3.0).length * F.jArray(3.0)[0].length);
 	}
 	@Test
 	public void MAtest_translateX() {
@@ -59,29 +60,26 @@ public class FractalTests {
 	
 	@Test
 	public void MAtest_escapeTimeNeverExceeds() {
-		assertEquals(255, F.maETA(0.3207031250000001, -0.07109374999999386), 0.00000000001);
+		assertEquals(255, F.maETA(0.3207031250000001, -0.07109374999999386, 3.0), 0.00000000001);
 	}
 	@Test
 	public void noZEROorONE(){
 		assertFalse(F.zerorone());
 	}
-	@Test
-	public void MAtest_escapeTimeExceeds() {
-		assertEquals(1, F.maETA(0.5946289062500001, 1.2949218750000122), 0.00000000001);
-	}
+	
 	
 	@Test
 	public void MAtest_getArray() {
-		assertEquals(262144, F.maArray().length * F.maArray()[0].length);
+		assertEquals(262144, F.maArray(3.0).length * F.maArray(3.0)[0].length);
 	}
 	@Test
 	public void testMultibrotNeverExceed(){
-		assertEquals(255, F.muETA(0.5859375, 0.24375000000000108), 0.0001);
+		assertEquals(255, F.muETA(0.5859375, 0.24375000000000108, 3.0), 0.0001);
 		
 	}
 	@Test
 	public void testMultibrotExceed(){
-		assertEquals(1, F.muETA(0.9921875, 1.05625 ));
+		assertEquals(1, F.muETA(0.9921875, 1.05625, 3.0 ));
 	}
 	@Test
 	public void MUxTranslate(){
@@ -94,7 +92,7 @@ public class FractalTests {
 	
 	@Test
 	public void MUtest_getArray() {
-		assertEquals(262144, F.muArray().length * F.muArray()[0].length);
+		assertEquals(262144, F.muArray(3.0).length * F.muArray(3.0)[0].length);
 	}
 	
 	
