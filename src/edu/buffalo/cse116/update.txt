@@ -1,0 +1,9 @@
+The Escape Distance is updated by navigating to 
+	File --> Set Escape Distance --> Enter a positive numerical value as per the directions on screen
+	
+If an incorrect Escape Distance is entered, an error message is displayed and the user will have to navigate
+	back to File --> Set Escape Distance to enter a new Escape Distance. 
+
+(In Test.java, review lines: 78-108)
+
+An incorrect Escape Distance is anything entered other than a positive numerical value.

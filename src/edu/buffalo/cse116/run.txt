@@ -1,0 +1,46 @@
+Our GUI methods are defined in the Test.java class. 
+Run as a 'Java Application' and new window should appear on the screen.
+The default size of the window is: 960 X 540.
+If there are any issues regarding the size of the window, it is re-sizable.
+
+***Navigating the Application***
+The Menu Bar has 3 Options: 
+1. File
+	1a. Set Escape Distance: 
+		Allows the user to set the Escape Distance for every fractal at the same time.
+		Only a positive number is accepted.
+	1b. Exit: 
+		Exits the Application.
+2. Fractal
+	2a. Burning Ship Fractal: Selects the Burning Ship Fractal to be displayed.
+	2b. Julia Fractal: Selects the Julia Fractal to be displayed.
+	2c. Mandelbrot Fractal: Selects the Mandelbrot Fractal to be displayed.
+	2d. Multibrot Fractal: Selects the Multibrot Fractal to be displayed.
+3. Color
+	3a. Blue: 
+		Colors every fractal BLUE.
+	3b. Gray: Colors every fractal GRAY.
+	3c. Green: Colors every fractal GREEN.
+	3d. Purple: Colors every fractal PURPLE.
+	3e. Rainbow: Colors every fractal RAINBOW.
+	3f. Red: Colors every fractal RED.
+	3g. Turquoise: Colors every fractal TURQUOISE.
+	
+***Using the Application***
+1. File --> Set Escape Distance
+	A separate window will pop up asking for input. 
+	Follow the directions on screen.
+	An error message pops up if the directions are not followed. 
+2. Fractal --> Burning Ship, Julia, Mandelbrot, Multibrot
+	Clicking on a fractal will display the fractal on the screen AFTER the Escape Distance has been inputed.
+	A Fractal will display only if the Escape Distance is 2 or greater.
+3. Color --> Blue, Gray, Green, Purple, Rainbow, Red, Turquoise
+	Clicking on a color will change the color of the fractal selected.
+	Selecting a fractal after selecting a color will display that fractal with the color selected. 
+	
+Notes:
+	The Escape Distance can be changed at anytime.
+	A fractal can be selected at anytime.
+	A color can be selected at anytime. 
+	Whenever an Escape Distance, fractal, or color is chosen, ALL fractals are updated and the current fractal
+		selected will reflect that as well as choosing another fractal.
