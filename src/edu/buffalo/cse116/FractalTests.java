@@ -128,6 +128,6 @@ public class FractalTests {
 	}
 	@Test
 	public void MUdist4() {
-		assertEquals(135, F.muETA(0.3207031250000001, -0.07109374999999386, 2, 135), 0.0001);
+		assertEquals(135, F.muETA(0.5859375, 0.24375000000000108, 2, 135), 0.0001);
 	}
 }
