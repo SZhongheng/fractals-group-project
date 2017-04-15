@@ -14,12 +14,12 @@ public class Fractal {
 	private int edInput;
 	private int etInput = 255;
 	
-	private double _startingXRange;
-	private double _endingXRange;
-	private double _startingYRange;
-	private double _endingYRange;
+	private int _startingXRange;
+	private int _endingXRange;
+	private int _startingYRange;
+	private int _endingYRange;
 	
-	public void setRanges(double startingXRange, double endingXRange, double startingYRange, double endingYRange) {
+	public void setRanges(int startingXRange, int endingXRange, int startingYRange, int endingYRange) {
 		_startingXRange = startingXRange;
 		_endingXRange = endingXRange;
 		_startingYRange = startingYRange;
@@ -169,8 +169,8 @@ public class Fractal {
 	public int[][] maArray(double edInput, double etInput){
 		for(int i = 0; i < maFractal.length; i++){
 			for(int j = 0; j<maFractal[0].length; j++){
-				double x = maTranslateX(i);
-				double y = maTranslateY(j);
+				 x = maTranslateX(i);
+				 y = maTranslateY(j);
 				maFractal[i][j] = maETA(x, y, edInput, etInput);
 			}
 		}

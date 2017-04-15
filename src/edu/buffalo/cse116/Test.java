@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.IndexColorModel;
 import java.awt.Font;
 import java.awt.Component;
@@ -23,8 +24,10 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.Window;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 import java.awt.Canvas;
 
 //d
@@ -34,9 +37,13 @@ public class Test {
 	Fractal F = new Fractal();
 	private JFrame frame;
 	private ColorModelFactory newModel = new ColorModelFactory();
-	int x;
+	static int x;
+	static int y;
 	private double edInput;
 	private double etInput = 255;
+	
+
+	
 	/**
 	 * Launch the application.
 	 */
@@ -63,6 +70,7 @@ public class Test {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		FP.addMouseListener(new MouseStuff());
 		frame = new JFrame();
 		frame.setBounds(0, 0, 960, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,10 +101,10 @@ public class Test {
 						FP.updateImage(F.jArray(edInput, etInput));
 					}
 					if (x == 3) {
-						FP.updateImage(F.maArray(edInput, etInput));
+						FP.updateImage(F.maArray(edInput, etInput ));
 					}
 					if (x == 4) {
-						FP.updateImage(F.muArray(edInput, etInput));
+						FP.updateImage(F.muArray(edInput, etInput ));
 					}
 				} catch (NumberFormatException n) {
 					String[] buttons = { "OK" };
@@ -107,6 +115,16 @@ public class Test {
 				}
 			}
 		});
+		
+	   
+		
+		
+		
+		
+		
+		
+		
+		
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -126,25 +144,25 @@ public class Test {
 		mntmSetEscapeTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					etInput = Double.parseDouble(JOptionPane.showInputDialog(frame, "Enter a numberical value greater than or equal to 0: ", "Example: 2 or 3.7"));
-					if (etInput < 0) {
+					etInput = Double.parseDouble(JOptionPane.showInputDialog(frame, "Enter a numberical value greater than 0 and lesser than 225: ", "Example: 2 or 3.7"));
+					if (etInput < 0 || etInput > 225) {
 						throw new NumberFormatException();
 					}
 					if (x == 1) {
-						FP.updateImage(F.bsArray(edInput, etInput));
+						FP.updateImage(F.bsArray(edInput, etInput ));
 					}
 					if (x == 2) {
-						FP.updateImage(F.jArray(edInput, etInput));
+						FP.updateImage(F.jArray(edInput, etInput ));
 					}
 					if (x == 3) {
-						FP.updateImage(F.maArray(edInput, etInput));
+						FP.updateImage(F.maArray(edInput, etInput ));
 					}
 					if (x == 4) {
-						FP.updateImage(F.muArray(edInput, etInput));
+						FP.updateImage(F.muArray(edInput, etInput ));
 					}
 				} catch (NumberFormatException n) {
 					String[] buttons = { "OK" };
-					JOptionPane.showOptionDialog(frame, "Please enter a numerical value greater than or equal to 0!", "ERROR", JOptionPane.WARNING_MESSAGE, 0,
+					JOptionPane.showOptionDialog(frame, "Please enter a numerical value greater than 0 and lower than 255!", "ERROR", JOptionPane.WARNING_MESSAGE, 0,
 							null, buttons, buttons[0]);
 				} catch (NullPointerException npe) {
 
@@ -158,16 +176,16 @@ public class Test {
 		mntmReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (x == 1) {
-					FP.updateImage(F.bsArray(edInput, etInput));
+					FP.updateImage(F.bsArray(edInput, etInput ));
 				}
 				if (x == 2) {
-					FP.updateImage(F.jArray(edInput, etInput));
+					FP.updateImage(F.jArray(edInput, etInput ));
 				}
 				if (x == 3) {
-					FP.updateImage(F.maArray(edInput, etInput));
+					FP.updateImage(F.maArray(edInput, etInput ));
 				}
 				if (x == 4) {
-					FP.updateImage(F.muArray(edInput, etInput));
+					FP.updateImage(F.muArray(edInput, etInput ));
 				}
 			}
 		});
@@ -184,7 +202,7 @@ public class Test {
 		mnFractal.add(mntmBurningShip);
 		mntmBurningShip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(F.bsArray(edInput, etInput));
+				FP.updateImage(F.bsArray(edInput, etInput ));
 				x = 1;
 			}
 		});
@@ -193,7 +211,7 @@ public class Test {
 		mnFractal.add(mntmJulia);
 		mntmJulia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(F.jArray(edInput, etInput));
+				FP.updateImage(F.jArray(edInput, etInput ));
 				x = 2;
 			}
 		});
@@ -203,7 +221,7 @@ public class Test {
 		mnFractal.add(mntmMandelbrot);
 		mntmMandelbrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(F.maArray(edInput, etInput));
+				FP.updateImage(F.maArray(edInput, etInput ));
 				x = 3;
 			}
 		});
@@ -213,7 +231,7 @@ public class Test {
 		mnFractal.add(mntmMultibrot);
 		mntmMultibrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FP.updateImage(F.muArray(edInput, etInput));
+				FP.updateImage(F.muArray(edInput, etInput ));
 				x = 4;
 			}
 		});
@@ -229,16 +247,16 @@ public class Test {
 					public void actionPerformed(ActionEvent e) {
 						FP.setIndexColorModel(newModel.createBluesColorModel(256));
 						if (x == 1) {
-							FP.updateImage(F.bsArray(edInput, etInput));
+							FP.updateImage(F.bsArray(edInput, etInput ));
 						}
 						if (x == 2) {
-							FP.updateImage(F.jArray(edInput, etInput));
+							FP.updateImage(F.jArray(edInput, etInput ));
 						}
 						if (x == 3) {
-							FP.updateImage(F.maArray(edInput, etInput));
+							FP.updateImage(F.maArray(edInput, etInput  ));
 						}
 						if (x == 4) {
-							FP.updateImage(F.muArray(edInput, etInput));
+							FP.updateImage(F.muArray(edInput, etInput ));
 						}
 					}
 				});
@@ -250,16 +268,16 @@ public class Test {
 					public void actionPerformed(ActionEvent e) {
 						FP.setIndexColorModel(newModel.createGrayColorModel(256));
 						if (x == 1) {
-							FP.updateImage(F.bsArray(edInput, etInput));
+							FP.updateImage(F.bsArray(edInput, etInput ));
 						}
 						if (x == 2) {
-							FP.updateImage(F.jArray(edInput, etInput));
+							FP.updateImage(F.jArray(edInput, etInput ));
 						}
 						if (x == 3) {
-							FP.updateImage(F.maArray(edInput, etInput));
+							FP.updateImage(F.maArray(edInput, etInput ));
 						}
 						if (x == 4) {
-							FP.updateImage(F.muArray(edInput, etInput));
+							FP.updateImage(F.muArray(edInput, etInput ));
 						}
 					}
 				});
@@ -271,16 +289,16 @@ public class Test {
 			public void actionPerformed(ActionEvent e) {
 				FP.setIndexColorModel(newModel.createGreenColorModel(256));
 				if (x == 1) {
-					FP.updateImage(F.bsArray(edInput, etInput));
+					FP.updateImage(F.bsArray(edInput, etInput ));
 				}
 				if (x == 2) {
-					FP.updateImage(F.jArray(edInput, etInput));
+					FP.updateImage(F.jArray(edInput, etInput ));
 				}
 				if (x == 3) {
-					FP.updateImage(F.maArray(edInput, etInput));
+					FP.updateImage(F.maArray(edInput, etInput ));
 				}
 				if (x == 4) {
-					FP.updateImage(F.muArray(edInput, etInput));
+					FP.updateImage(F.muArray(edInput, etInput ));
 				}
 			}
 		});
@@ -292,16 +310,16 @@ public class Test {
 					public void actionPerformed(ActionEvent e) {
 						FP.setIndexColorModel(newModel.createPurpleColorModel(256));
 						if (x == 1) {
-							FP.updateImage(F.bsArray(edInput, etInput));
+							FP.updateImage(F.bsArray(edInput, etInput ));
 						}
 						if (x == 2) {
-							FP.updateImage(F.jArray(edInput, etInput));
+							FP.updateImage(F.jArray(edInput, etInput ));
 						}
 						if (x == 3) {
-							FP.updateImage(F.maArray(edInput, etInput));
+							FP.updateImage(F.maArray(edInput, etInput ));
 						}
 						if (x == 4) {
-							FP.updateImage(F.muArray(edInput, etInput));
+							FP.updateImage(F.muArray(edInput, etInput ));
 						}
 					}
 				});
@@ -313,16 +331,16 @@ public class Test {
 					public void actionPerformed(ActionEvent e) {
 						FP.setIndexColorModel(newModel.createRainbowColorModel(256));
 						if (x == 1) {
-							FP.updateImage(F.bsArray(edInput, etInput));
+							FP.updateImage(F.bsArray(edInput, etInput ));
 						}
 						if (x == 2) {
-							FP.updateImage(F.jArray(edInput, etInput));
+							FP.updateImage(F.jArray(edInput, etInput ));
 						}
 						if (x == 3) {
-							FP.updateImage(F.maArray(edInput, etInput));
+							FP.updateImage(F.maArray(edInput, etInput ));
 						}
 						if (x == 4) {
-							FP.updateImage(F.muArray(edInput, etInput));
+							FP.updateImage(F.muArray(edInput, etInput ));
 						}
 					}
 				});
@@ -340,10 +358,10 @@ public class Test {
 					FP.updateImage(F.jArray(edInput, etInput));
 				}
 				if (x == 3) {
-					FP.updateImage(F.maArray(edInput, etInput));
+					FP.updateImage(F.maArray(edInput, etInput ));
 				}
 				if (x == 4) {
-					FP.updateImage(F.muArray(edInput, etInput));
+					FP.updateImage(F.muArray(edInput, etInput ));
 				}
 
 			}
@@ -373,4 +391,55 @@ public class Test {
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		frame.getContentPane().add(FP);
 	}
+	 
+	 public static class MouseStuff implements MouseListener, MouseMotionListener {
+		 
+		 boolean dragging = false;
+
+		@Override
+		public void mouseDragged(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			
+			 x = arg0.getX();   
+	         y = arg0.getY();
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			Point point = arg0.getPoint();
+			
+	      
+			
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			 
+			
+		}
+}
 }

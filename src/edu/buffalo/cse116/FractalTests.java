@@ -113,6 +113,21 @@ public class FractalTests {
 	public void MUdist3(){
 		assertEquals(10,F.muETA(0.7025440313111545,  -0.5520547945205528, 3, 255),0.001);
 	}
+	@Test
+	public void JDist4() {
+		assertEquals(135, F.jETA(1.0492187499999897, -0.234375, 2, 135), 0.0001);
+	}
+	@Test
+	public void BSdist4() {
+		assertEquals(135, F.bsETA(-1.7443359374999874, -0.017451171875000338, 2, 135), 0.0001);
+	}
 	
-	
+	@Test
+	public void MAdist4() {
+		assertEquals(135, F.maETA(0.3207031250000001, -0.07109374999999386, 2, 135), 0.0001);
+	}
+	@Test
+	public void MUdist4() {
+		assertEquals(135, F.muETA(0.3207031250000001, -0.07109374999999386, 2, 135), 0.0001);
+	}
 }
