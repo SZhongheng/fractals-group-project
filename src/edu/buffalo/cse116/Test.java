@@ -33,14 +33,50 @@ import java.awt.Canvas;
 //d
 public class Test {
 
-	FractalPanel FP = new FractalPanel();
-	Fractal F = new Fractal();
+	static FractalPanel FP = new FractalPanel();
+	static Fractal F = new Fractal();
 	private JFrame frame;
 	private ColorModelFactory newModel = new ColorModelFactory();
 	static int x;
 	static int y;
-	private double edInput;
-	private double etInput = 255;
+	private static double edInput;
+	private static double etInput = 255;
+	public static int[][] fractalArray;
+	
+	private static double _startingXRange;
+	private static double _endingXRange;
+	private static double _startingYRange;
+	private static double _endingYRange;
+	
+	public static void setRanges(double startingXRange, double endingXRange, double startingYRange, double endingYRange) {
+		_startingXRange = startingXRange;
+		_endingXRange = endingXRange;
+		_startingYRange = startingYRange;
+		_endingYRange = endingYRange;
+	}
+	
+	public static double translateX(double index) {
+		double sx = 0, ex = 0;
+		if (x == 1) {
+			double inc = 0.1/512;
+			 //return -1.8 + x * i;
+			sx = ((inc * _startingXRange) + (-1.8));
+			ex = ((inc * _endingXRange) + (-1.8));
+		}
+		
+		return sx + ((ex - sx) / (512)) * index;
+	}
+	
+	public static double translateY(double index) {
+		double sy = 0, ey = 0;
+			if (x == 1) {
+				double inc = .105/512;
+				//return -0.08 + y * j;
+				sy = ((inc * _startingYRange) + (-0.08));
+				ey = ((inc * _endingYRange) + (-0.08));
+			}
+			return sy + ((ey - sy) / (512)) * index;
+	}
 	
 
 	
@@ -70,9 +106,9 @@ public class Test {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		FP.addMouseListener(new MouseStuff());
 		frame = new JFrame();
-		frame.setBounds(0, 0, 960, 540);
+		frame.setBounds(0, 0, 512, 512);
+		//FP.setPreferredSize(new Dimension(1024, 1024));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -116,16 +152,6 @@ public class Test {
 			}
 		});
 		
-	   
-		
-		
-		
-		
-		
-		
-		
-		
-
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		mntmExit.addMouseListener(new MouseAdapter() {
@@ -389,12 +415,35 @@ public class Test {
 		});
 
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
-		frame.getContentPane().add(FP);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel);
+		panel.add(FP);
+		FP.addMouseListener(new MouseStuff());
 	}
 	 
 	 public static class MouseStuff implements MouseListener, MouseMotionListener {
 		 
 		 boolean dragging = false;
+		private int clickNum = 1;
+		
+		public int BurningShip(double xInput, double yInput, double escapeDistanceInput, double escapeTimeInput){
+			double xCalc = xInput;
+			double yCalc = yInput;
+			double newX;
+			double newY;
+			double dist = Math.sqrt(Math.pow((xCalc - 0), 2) + Math.pow((yCalc - 0), 2));
+			int passes = 0;
+			while(dist <= escapeDistanceInput && passes < escapeTimeInput){
+				newX = ((Math.pow(xCalc, 2)) - (Math.pow(yCalc, 2)) + xInput);
+				newY = Math.abs(2*xCalc*yCalc) + yInput;
+				xCalc = newX;
+				yCalc = newY;
+				passes++;
+				dist = Math.sqrt(Math.pow((xCalc - 0), 2) + Math.pow((yCalc - 0), 2));
+			}
+			return passes;
+		}
 
 		@Override
 		public void mouseDragged(MouseEvent arg0) {
@@ -409,11 +458,17 @@ public class Test {
 		}
 
 		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			
-			 x = arg0.getX();   
-	         y = arg0.getY();
-			
+		public void mouseClicked(MouseEvent z) {
+			if (clickNum == 1) {
+				_startingXRange = z.getX();
+				_startingYRange = z.getY();
+			}
+			if (clickNum == 2) {
+				_endingXRange = z.getX();
+				_endingYRange = z.getY();
+			}
+			System.out.println(z.getX() + " " + z.getY());
+			clickNum ++;
 		}
 
 		@Override
@@ -428,18 +483,32 @@ public class Test {
 		}
 
 		@Override
-		public void mousePressed(MouseEvent arg0) {
-			Point point = arg0.getPoint();
-			
-	      
-			
-			
+		public void mousePressed(MouseEvent z) {
+			//System.out.println(z.getX() + " " + z.getY());
 		}
 
 		@Override
-		public void mouseReleased(MouseEvent arg0) {
-			 
-			
+		public void mouseReleased(MouseEvent z) {
+			 if (clickNum == 2) {
+				 clickNum = 0;
+				 if (x == 1) {
+					 double pixelIncrement = 0.1/512;
+					 /*double sx = ((x * 91) + (-1.8));
+						double ex = ((x * 220) + (-1.8));
+						return sx + ((ex - sx) / (512)) * i;*/
+					 setRanges(_startingXRange, _endingXRange, _startingYRange, _endingYRange);
+					 int row = 512;
+						int col = 512;
+						fractalArray = new int[row][col];
+						for (int i = 0; i < fractalArray.length; i++) {
+							for (int j = 0; j < fractalArray[0].length; j++) {
+								fractalArray[i][j] = this.BurningShip(translateX(i), translateY(j), edInput, etInput);
+							}
+						}
+				 }
+				 FP.updateImage(fractalArray);
+				 System.out.println(z.getX() + " " + z.getY());
+			 }
 		}
 }
 }

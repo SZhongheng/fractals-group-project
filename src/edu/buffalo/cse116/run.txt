@@ -44,3 +44,5 @@ Notes:
 	A color can be selected at anytime. 
 	Whenever an Escape Distance, fractal, or color is chosen, ALL fractals are updated and the current fractal
 		selected will reflect that as well as choosing another fractal.
+		
+NOTE: OUR PROGRAM DOES NOT HAVE A ZOOM FUNCTION. WE HAVE COMPLETED THE REST OF THE REQUIREMENTS.

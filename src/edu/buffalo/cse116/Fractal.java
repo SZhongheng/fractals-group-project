@@ -44,12 +44,18 @@ public class Fractal {
 	
 	public double bsTranslateX(int i){
 		 x = 0.1/512;
-		 return -1.8 + x * i;	
+		 return -1.8 + x * i;
+		/*double sx = ((x * 91) + (-1.8));
+		double ex = ((x * 220) + (-1.8));
+		return sx + ((ex - sx) / (512)) * i;*/
 	}
 	
 	public double bsTranslateY(int j){
 		y = .105/512;
 		return -0.08 + y * j;
+		/*double sy = ((y * 76) + (-0.08));
+		double ey = ((y * 340) + (-0.08));
+		return sy + ((ey - sy) / (512)) * j;*/
 	}
 	
 	public double jTranslateX(int i){
